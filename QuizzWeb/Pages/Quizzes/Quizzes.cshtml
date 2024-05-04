@@ -1,0 +1,483 @@
+﻿@page
+@model QuizzWeb.Pages.Quizzes.QuizzesModel
+@{
+    ViewData["Menu"] = "quizzes";
+}
+
+@section Styles {
+    <style>
+        .quizzes-container {
+            margin-top: 24px;
+        }
+
+        .quizzes-content {
+            max-height: 260px;
+            overflow-y: auto;
+        }
+
+        .quizzes-header {
+            margin: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quizzes-title {
+        }
+
+        .quizz-add-btn {
+            background-color: #307EF3;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 6px;
+        }
+
+        .table-data {
+            height: 80px;
+        }
+        
+        .info-quizz-btn:hover, .edit-quizz-btn:hover, .delete-quizz-btn:hover {
+            text-decoration: underline;
+        }
+
+        @* Modal Add Quizz *@
+
+        .modal-add-quizz, .modal-edit-quizz {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /*display: flex;*/
+            justify-content: center;
+            align-items: center;
+            display: none;
+            z-index: 10;
+            transition: all .3s ease-in-out;
+            /*opacity: 0;*/
+        }
+
+        .modal-add-quizz.active, .modal-edit-quizz.active {
+            /*animation: ease-in fadeIn .3s;*/
+            display: flex;
+            /*animation: fadeOut .5s ease;*/
+        }
+
+        .opac-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            animation:  fadeIn .5s ease;
+        }
+
+        .modal-add-quizz_container, .modal-edit-quizz_container {
+            position: relative;
+            padding: 20px;
+            width: 800px;
+            background-color: #fff;
+            z-index: 999;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+             animation: growth ease-in .3s;
+        }
+
+        .add-quizz_title, .edit-quizz_title {
+            font-size: 3.6rem;
+            text-align: center;
+        }
+
+        .add-quizz_form, .edit-quizz_form{
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        label {
+            font-size: 1.8rem;
+        }
+        
+        .line {
+            margin-top: -7px;
+        }
+
+        .add-quizz_form .form-item:nth-child(2) {
+            width: 20%;
+        }
+
+        .edit-quizz_form .form-item:nth-child(3) {
+            width: 20%;
+        }
+        
+        .quizz-add-btn-1, .quizz-add-btn-2, .quizz-update-btn {
+            background-color: #307EF3;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 6px;
+            width: fit-content;
+        }
+
+            .quizz-add-btn-1:hover, .quizz-add-btn-2:hover, .quizz-update-btn {
+                cursor: pointer;
+                opacity: 0.9;
+            }
+
+        .quizz-add-btn-2, .quizz-update-btn {
+            margin-top: 12px;
+        }
+
+        /* Pagination */
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items:center;
+            gap: 20px;
+        }
+
+        .pages-list {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .page-item {
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+        }
+
+        .page-item:active {
+            
+        }
+
+        .page-item:hover {
+            cursor: pointer;
+            background: #000006;
+        }
+
+        .page-item:hover .page-link {
+            color: #fff;
+        }
+
+        .page-link {
+            font-size: 1.8rem;
+        }
+
+        @@media screen and (max-width: 767px) {
+            .quizzes-content .table-heading:nth-child(1), .quizzes-content .table-heading:nth-child(3), .quizzes-content .table-heading:nth-child(4) {
+                display: none;
+             }
+
+            .quizzes-content .table-data:nth-child(1), .quizzes-content .table-data:nth-child(3), .quizzes-content .table-data:nth-child(4) {
+               display: none;
+            }
+
+            .quizzes-content .table-heading:nth-child(2), .quizzes-content .table-data:nth-child(2) {
+                width: auto;
+            }
+        }
+    </style>
+}
+
+<div class="quizzes-container">
+    <div class="quizzes-header">
+        <h2 class="quizzes-title">Danh sách đề thi</h2>
+        <button class="quizz-add-btn-1" >Thêm đề thi</button>
+    </div>
+    <div class="quizzes-content">
+        <table class="table">
+            <thead>
+                <tr class="table-header">
+                    <th class="table-heading">
+                        STT
+                    </th>
+                    <th class="table-heading">
+                        Tên đề thi
+                    </th>
+                    <th class="table-heading">
+                        Số câu hỏi
+                    </th>
+                     <th class="table-heading">
+                        Thời gian
+                    </th>
+                    <th class="table-heading">
+                        Hành động
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="list-quizzes">             
+            </tbody>
+        </table>     
+    </div>
+
+    <div class="pagination">
+            <button class="prev-btn">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <ul class="pages-list">
+                <li class="page-item">
+                    <a class="page-link">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link">3</a>
+                </li>
+            </ul>
+            <button class="next-btn">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+    @* Modal Add Quizz *@
+    <div class="modal-add-quizz">
+        <div class="opac-layer"></div>
+        <div class="modal-add-quizz_container">
+            <div class="add-quizz_container">
+                <h2 class="add-quizz_title">Thêm mới đề thi</h2>
+                <form class="add-quizz_form">
+                    <div class="form-item">
+                        <label class="label-name">Tên đề thi</label>
+                        <input type="text" id="quizz-name-add" class="quizz-name-add" placeholder="Nhập tên đề thi" />
+                        <span class="line"></span>
+                    </div>
+                    <div class="form-item">
+                        <label class="label-ques-quantity">Thời gian</label>
+                        <input type="number" id="total-time-add" class="total-time" min="1" max="100000" step="1" />
+                        <span class="line"></span>
+                    </div>
+                </form>
+                 <button class="quizz-add-btn-2" onclick="addQuizz()">Thêm đề thi</button>
+            </div>
+        </div>
+    </div>
+
+     @* Modal Edit Quizz *@
+    <div class="modal-edit-quizz">
+        <div class="opac-layer"></div>
+        <div class="modal-edit-quizz_container">
+            <div class="edit-quizz_container">
+                <h2 class="edit-quizz_title">Cập nhật đề thi</h2>
+                <form class="edit-quizz_form">
+                    <div class="form-item" >
+                        <label class="label-name">Mã đề thi</label>
+                        <input type="text" id="quizz-code" class="quizz-code"/>
+                        <span class="line"></span>
+                    </div>
+                    <div class="form-item">
+                        <label class="label-name">Tên đề thi</label>
+                        <input type="text" id="quizz-name-edit" class="quizz-name-edit" placeholder="Nhập tên đề thi" />
+                        <span class="line"></span>
+                    </div>
+                    <div class="form-item">
+                        <label class="label-ques-quantity">Thời gian</label>
+                        <input type="number" id="total-time-edit" class="total-time" min="1" max="100000" step="1" />
+                        <span class="line"></span>
+                    </div>
+                </form>
+                 <button class="quizz-update-btn" onclick="UpdateQuizz();">Cập nhật đề thi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        
+
+        $('.quizz-add-btn-1').click(function() {
+            $('.modal-add-quizz').addClass('active');
+        })        
+        
+        $('.opac-layer').click(function() {
+            $('.modal-add-quizz').removeClass('active');
+            $('.modal-edit-quizz').removeClass('active');
+            
+        })
+
+        
+
+        // Thêm đề thi
+
+        const addQuizz = async () => {
+            const token = GetCookie('userToken');
+            let model = {
+                title: $("#quizz-name-add").val(),
+                totaltime: $("#total-time-add").val(),
+            }
+
+            let rq = await fetch('https://localhost:7270/api/Exam/CreateExam', {
+                method: 'post',
+                headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': token
+                },
+
+                body: JSON.stringify(model)
+            })
+
+            let rs = await rq.json()
+            if(rs.status === "success") {
+                setTimeout(() => {
+                    alert("Thêm đề thi thành công!");
+                }, 300)
+                $('.modal-add-quizz').removeClass('active');
+                $("#quizz-name-add").val('');
+                $("#total-time-add").val('');
+                  getListQuizzes();
+            } 
+            if(rs.status === "error") {
+                setTimeout(() => {
+                    alert("Thêm đề thi thất bại. Hãy kiểm tra chính xác các trường bạn vừa nhập!");                   
+                }, 300)
+            }
+            console.log(rs)
+        }
+
+        // Lấy danh sách đề thi
+        const getListQuizzes = async () => {
+            let page = 1;
+            let token =  GetCookie('userToken');
+            let rq = await fetch(`https://localhost:7270/api/Exam/GetList?page=${page}`, {
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                },
+            })
+
+            const rs = await rq.json();
+            console.log(rs);
+            if(rs.status === 'unauthenticated') window.location.href = ('/login/login')
+            else if(rs.status === 'error') alert('Lỗi !')
+            else if(rs.status === 'success') {
+                $('.list-quizzes').html(``);
+                for(i=0; i<rs.data.listData.length; i++) {
+                    const item = rs.data.listData[i];
+                    const stt = i+1;
+
+                    $('.list-quizzes').append(`
+                    <tr class="table-row" data-id="${item.ExamId}" >
+                        <td class="table-data">
+                            ${stt}
+                        </td>
+                        <td class="table-data">
+                            ${item.Title}
+                        </td>
+                        <td class="table-data">
+                            ${item.TotalQuestion}
+                        </td>
+                        <td class="table-data">
+                            ${item.TotalTime}
+                        </td>
+                        <td class="table-data">
+                            <span class="info-quizz-btn" onclick="direction('/questions/questions?examId=${item.ExamId}')" >Chi tiết</span>
+                            /
+                            <span class="edit-quizz-btn" onclick="handleEditBtnClick(this);">Sửa</span>
+                            /
+                            <span class="delete-quizz-btn" onclick="handleDeleteBtnClick(this);">Xoá</span>
+                        </td>
+                    </tr>`)
+                }              
+            }
+
+        }
+        getListQuizzes();
+
+        const handleEditBtnClick = async (el) => {
+            $('.modal-edit-quizz').addClass('active');
+            const rs = await getQuizzInfo($(el).closest('tr').data('id'));
+            console.log(rs);
+            $('#quizz-code').val(rs.data.examId);
+            $('#quizz-code').prop('disabled', true);
+            $('#quizz-name-edit').val(rs.data.title);
+            $('#total-time-edit').val(rs.data.totalTime);
+        }
+
+        const handleDeleteBtnClick = async (el) => {
+            const rs = await DeleteQuizz($(el).closest('tr').data('id'));
+            if(rs.status === "success") {
+                setTimeout(() => {
+                    alert("Xoá đề thi thành công!");
+                }, 300)
+                  getListQuizzes();
+            } 
+        }
+
+        const getQuizzInfo = async (id) => {
+            const token = GetCookie('userToken');
+
+            const rq = await fetch(`https://localhost:7270/api/Exam/GetDetail?id=${id}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                },
+            })
+            const rs = await rq.json();
+            return rs;
+        }
+
+        const UpdateQuizz = async () => {
+            let model = {
+                examId: $('#quizz-code').val(),
+                title:  $('#quizz-name-edit').val(),
+                totalTime: $('#total-time-edit').val(),
+            }
+
+            const token = GetCookie('userToken');
+
+            const rq = await fetch('https://localhost:7270/api/Exam/UpdateExam', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token,
+                     
+                },
+                body: JSON.stringify(model)
+            })
+            const rs = await rq.json();
+            if(rs.status === "success") {
+                setTimeout(() => {
+                    alert("Cập nhật đề thi thành công!");
+                }, 300)
+                $('.modal-edit-quizz').removeClass('active');
+                $("#quizz-name-edit").val('');
+                $("#total-time-edit").val('');
+                  getListQuizzes();
+            } 
+            if(rs.status === "error") {
+                setTimeout(() => {
+                    alert("Cập nhật đề thi thất bại. Hãy kiểm tra chính xác các trường bạn vừa chỉnh sửa!");                   
+                }, 300)
+            }
+            console.log(rs);
+        }
+
+        const DeleteQuizz = async (id) => {
+            const token = GetCookie('userToken');
+            const rq = await fetch(`https://localhost:7270/api/Exam/DeleteExam?id=${id}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token,                     
+                },
+            })
+
+            const rs = await rq.json();
+            return rs;
+        }
+
+        
+     
+    </script>
+}
+

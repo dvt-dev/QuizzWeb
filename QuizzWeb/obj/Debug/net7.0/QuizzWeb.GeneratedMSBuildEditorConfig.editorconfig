@@ -1,0 +1,85 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = QuizzWeb
+build_property.RootNamespace = QuizzWeb
+build_property.ProjectDir = D:\workspace\TTSway\Exersises\QuizzWeb\QuizzWeb\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\workspace\TTSway\Exersises\QuizzWeb\QuizzWeb
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Chat/Chat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhdFxDaGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Exam/Exam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbVxFeGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Questions/Questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVlc3Rpb25zXFF1ZXN0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/QuizRecordDetail/QuizRecordDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVpelJlY29yZERldGFpbFxRdWl6UmVjb3JkRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/QuizRecord/QuizRecord.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVpelJlY29yZFxRdWl6UmVjb3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Quizzes/Quizzes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVpenplc1xRdWl6emVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Register/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXJcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Shared/_MenuNavigation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9NZW51TmF2aWdhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/Test/Test.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFxUZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/workspace/TTSway/Exersises/QuizzWeb/QuizzWeb/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

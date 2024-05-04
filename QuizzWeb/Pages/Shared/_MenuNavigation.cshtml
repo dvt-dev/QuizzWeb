@@ -1,0 +1,21 @@
+﻿
+
+<div class="menu-nav">
+    <ul class="menu-nav-list">
+        <li class="menu-nav-item @(ViewData["Menu"] == "quizzes" ? "active" : "")"  onclick="direction('/quizzes/quizzes')">
+            <a class="menu-nav-link">
+                Đề
+            </a>
+        </li>
+        <li class="menu-nav-item @(ViewData["Menu"] == "questions" ? "active" : "")">
+            <a class="menu-nav-link">
+                Câu hỏi
+            </a>
+        </li>
+        <li class="menu-nav-item @(ViewData["Menu"] == "answers" ? "active" : "")">
+            <a class="menu-nav-link">
+                Đáp án
+            </a>
+        </li>
+    </ul>
+</div>

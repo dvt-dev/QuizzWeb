@@ -1,0 +1,693 @@
+﻿@page
+@model QuizzWeb.Pages.Questions.QuestionsModel
+@{
+    ViewData["Menu"] = "questions";
+}
+
+
+@section Styles {
+    <style>
+        .questions-container, .answers-container {
+            margin-top: 24px;
+        }
+
+        .questions-content, .answers-content {
+            border: 1px solid #ebf1f6;
+            overflow-y: auto;
+           
+        }
+
+        .questions-content {
+            max-height: 260px;
+        }
+
+        .answers-content {
+             max-height: 425px;
+        }
+
+        .answers-content .table-data {
+            height: auto;
+        }
+        .questions-header, .answers-header {
+            margin: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .table-data:nth-child(4) .question-image {
+            display: flex;
+            justify-content: center;
+            align-items:center;
+
+        }
+
+        .question-img {
+            max-width: 80px;
+            max-height: 80px;
+        }
+
+
+        /* Modal */
+
+        .modal-question, .modal-list-answers, .modal-answer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            z-index: 9;
+        }
+
+        .opac-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            animation: ease-in fadeIn .3s;
+        }
+
+        .modal-question_container, .modal-list-answers-container, .modal-answer-container {
+            position: relative;
+            padding: 28px;
+            width: 800px;
+            background-color: #fff;
+            z-index: 999;
+            animation: growth ease-in .3s;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-list-answers-container {
+            width: fit-content;
+            /*height: 425px;*/
+        }
+
+        .modal-question_title, .modal-answer_title {
+            font-size: 3.6rem;
+            text-align: center;
+        }
+
+        .modal-question_form, .modal-answer_form {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+            .form-item:first-child {
+                display: none;
+            }
+
+        label {
+            font-size: 1.8rem;
+        }
+
+        .save-question-btn, .save-answer-btn {
+            margin-top: 16px;
+            padding: 16px 40px;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            transform: translateX(-50%);
+        }
+
+
+        .preview {
+            display: flex;
+            width: 150px;
+            height: 150px;
+            border: .5px solid #00000040;
+            border-radius: 5px;
+            background-position:center;
+            background-size:cover;
+        }
+
+        /* Pagination */
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .pages-list {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .page-item {
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+        }
+
+            .page-item:active {
+            }
+
+            .page-item:hover {
+                cursor: pointer;
+                background: #000006;
+            }
+
+                .page-item:hover .page-link {
+                    color: #fff;
+                }
+
+        .page-link {
+            font-size: 1.8rem;
+        }
+
+        @@media screen and (max-width: 767px) {
+            .questions-header, .answers-header {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .questions-content .table-heading:nth-child(1), .questions-content .table-heading:nth-child(3), .questions-content .table-heading:nth-child(4) {
+                display: none;
+            }
+
+            .questions-content .table-data:nth-child(1), .questions-content .table-data:nth-child(3), .questions-content .table-data:nth-child(4) {
+                display: none;
+            }
+
+            .questions-content .table-heading:nth-child(2), .questions-content .table-data:nth-child(2) {
+                width: auto;
+            }
+
+            .answers-content .table-heading:nth-child(1), .answers-content .table-heading:nth-child(3) {
+                display: none;
+            }
+
+            .answers-content .table-data:nth-child(1), .answers-content .table-data:nth-child(3) {
+                display: none;
+            }
+
+            .answers-content .table-heading:nth-child(2), .answers-content .table-data:nth-child(2) {
+                width: auto;
+            }
+          
+        }
+    </style>
+}
+
+<div class="questions-container">
+    <div class="questions-header">
+        <h2 class="questions-title">Danh sách câu hỏi</h2>
+        <button class="question-add-btn btn" onclick="OpenQuestionModal();">Thêm câu hỏi</button>
+    </div>
+    <div class="questions-content">
+        <table class="table">
+            <thead>
+                <tr class="table-header">
+                    <th class="table-heading">
+                        STT
+                    </th>
+                    <th class="table-heading">
+                        Tên câu hỏi
+                    </th>
+                    <th class="table-heading">
+                        Số điểm
+                    </th>
+                    <th class="table-heading">
+                        Hình ảnh
+                    </th>
+                    <th class="table-heading">
+                        Hành động
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="list-question">
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <button class="prev-btn">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <ul class="pages-list">
+            <li class="page-item">
+                <a class="page-link">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link">3</a>
+            </li>
+        </ul>
+        <button class="next-btn">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+</div>
+
+
+
+    @* MODAL QUESTION *@
+
+    <div class="modal-question" id="question-modal">
+        <div class="opac-layer" onclick="CloseQuestionModal();"></div>
+        <div class="modal-question_container">
+            <h2 class="modal-question_title">QUESTION</h2>
+            <form class="modal-question_form">
+                <div class="form-item">
+                    <label class="label-name">Mã câu hỏi</label>
+                    <input type="text" id="question-id" class="question-id" />
+                    <span class="line"></span>
+                </div>
+                <div class="form-item">
+                    <label class="label-name">Tên câu hỏi</label>
+                    <input type="text" id="question-name" class="question-name" placeholder="Nhập tên câu hỏi" />
+                    <span class="line"></span>
+                </div>
+                <div class="form-item">
+                    <label class="label-ques-quantity">Số điểm</label>
+                    <input type="number" id="question-score" class="question-score" min="1" max="1000" step="1" />
+                    <span class="line"></span>
+                </div>
+                <div class="form-item">
+                    <label class="label-ques-quantity">Hình ảnh</label>
+                    <div class="preview" onclick="OpenFilePickerDialog(this);"></div>
+                    <input type="hidden" id="question-image-data" value=""/>
+                    <input type="file" id="question-image"  class="question-image"  style="display:none;" onchange="QuestionImageFile_OnChange(this);"/>
+                    <span class="line"></span>
+                </div>
+            </form>
+            <button class="save-question-btn btn" onclick="SaveQuestion();">Lưu</button>
+        </div>
+    </div>
+
+    @*  MODAL LIST ANSWERS *@
+    <div class="modal-list-answers" id="modal-list-answers">
+
+        <div class="opac-layer" onclick="CloseModalListAnswers();"></div>
+        <div class="modal-list-answers-container">
+            <div class="answers-header">
+                <h2 class="answers-title">Danh sách đáp án</h2>
+                <button class="answer-add-btn btn" onclick="OpenModalAnswer();">Thêm đáp án</button>
+            </div>
+            <div class="answers-content">
+                <table class="table">
+                    <thead>
+                        <tr class="table-header">
+                            <th class="table-heading">
+                                STT
+                            </th>
+                            <th class="table-heading">
+                                Tên đáp án
+                            </th>
+                            <th class="table-heading">
+                                Đáp án đúng
+                            </th>
+                            <th class="table-heading">
+                                Hành động
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="list-answers">
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+
+    @* MODAL ANSWER *@
+    <div class="modal-answer" id="modal-answer">
+        <div class="opac-layer" onclick="CloseModalAnswer();"></div>
+        <div class="modal-answer-container">
+            <h2 class="modal-answer_title">ANSWER</h2>
+            <form class="modal-answer_form">
+                <div class="form-item">
+                    <label class="label-des">Mã đáp án</label>
+                    <input type="text" class="answer-id" id="answer-id" />
+                    <span class="line"></span>
+                </div>
+                <div class="form-item">
+                    <label class="label-name">Tên đáp án</label>
+                    <input type="text" class="answer-title" id="answer-title" placeholder="Nhập tên đáp án" />
+                    <span class="line"></span>
+                </div>
+                <div class="form-item">
+                    <label class="label-des">Đúng/Sai</label>
+                    <select class="select-answer" id="select-answer" placeholder="Đúng/Sai">
+                        <option value="true">Đúng</option>
+                        <option value="false">Sai</option>
+                    </select>
+                </div>
+            </form>
+            <button class="save-answer-btn btn" onclick="SaveAnswer();">Lưu</button>
+        </div>
+    </div>
+
+<div />
+
+@section Scripts {
+    <script>
+        const token = GetCookie('userToken');       // Lấy userToken được lưu trên cookie
+        const examId = GetParamInURL('examId');     // Lấy examId
+        let questionId = '';
+        let questionAnswerId = '123';
+
+        // QUESTION SECTION
+        // Hàm mở modal question
+        const OpenQuestionModal = async (el = null) => {
+            $('#question-modal').css("display", "flex");
+            if (el !== null) {
+                const id = $(el).closest('tr').data('id');
+                const rs = await GetQuestionInfo(id);
+                $("#question-id").val(id);
+                $('#question-name').val(rs.data.description);
+                $('#question-score').val(rs.data.score);
+                $('.preview').css('background-image', `url(https://localhost:7270/${rs.data.image})`);             
+            }
+        }
+
+        // Hàm đóng modal question
+        const CloseQuestionModal = () => {
+            $('#question-modal input').val('');
+            $('#question-image-data').siblings().val('');
+            $('.preview').css('background-image', 'none');
+            $('#question-modal').css("display", "none");
+        }
+
+        // Hàm lấy danh sách câu hỏi
+        const GetListQuestion = async () => {
+            const rq = await fetch(`https://localhost:7270/api/Question/GetList?examId=${examId}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                }
+            })
+
+            const rs = await rq.json();
+
+            if (rs.status === 'unauthenticated') window.location.href = ('/login/login')
+            else if (rs.status === 'error') alert('Lỗi !')
+            else if (rs.status === 'success') {
+                $('.list-question').html(``);
+                for (i = 0; i < rs.data.listData.length; i++) {
+                    let stt = i + 1;
+                    const item = rs.data.listData[i];
+                    $('.list-question').append(`
+                                <tr class="table-row" data-id=${item.QuestionId}>
+                                    <td class="table-data">
+                                        ${stt}
+                                    </td>
+                                    <td class="table-data">
+                                        ${item.Description}
+                                    </td>
+                                    <td class="table-data">
+                                        ${item.Score}
+                                    </td>
+                                    <td class="table-data">
+                                        <div class="question-image">
+                                            <img class="question-img" src="https://localhost:7270/${item.Image}" />
+                                        </div>
+                                        
+                                    </td>
+                                    <td class="table-data">
+                                        <span onclick="OpenModalListAnswers(this);">Chi tiết</span>
+                                         /
+                                        <span onclick="OpenQuestionModal(this);">Sửa</span>
+                                        /
+                                        <span onclick="DeleteQuestion(this);">Xoá</span>
+                                    </td>
+                                </tr>
+                            `)
+                }
+            }
+        }
+        GetListQuestion();
+
+        // Hàm xoá câu hỏi
+        const DeleteQuestion = async (el) => {
+            if (confirm('Bạn có chắc muốn xoá câu hỏi này không ?') === false) return;
+
+            const id = $(el).closest('tr').data('id');
+            const rq = await fetch(`https://localhost:7270/api/Question/Delete?id=${id}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                }
+            })
+
+            const rs = await rq.json();
+            if (rs.status === "success") {
+                setTimeout(() => {
+                    alert("Xoá câu hỏi thành công!");
+                }, 300)
+                GetListQuestion();
+            }
+        }
+
+        // Hàm lấy thông tin câu hỏi
+        const GetQuestionInfo = async (id) => {
+            const rq = await fetch(`https://localhost:7270/api/Question/GetDetail?id=${id}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                },
+            })
+
+            const rs = await rq.json();
+            return rs;
+        }
+
+        // Hàm lưu câu hỏi sau khi thêm / sửa
+        const SaveQuestion = async () => {
+            const model = {
+                questionId: $('#question-id').val(),
+                examId: examId,
+                description: $("#question-name").val(),
+                score: $('#question-score').val(),
+                image: $('#question-image-data').val(),
+            }
+
+            let url = 'https://localhost:7270/api/Question/Insert';
+            if (model.questionId !== '') url = 'https://localhost:7270/api/Question/Update';
+            const rq = await fetch(url, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                },
+                body: JSON.stringify(model),
+            })
+            const rs = await rq.json();
+            if (rs.status === "success") {
+                setTimeout(() => {
+                    alert("Lưu câu hỏi thành công!");
+                }, 300)
+                CloseQuestionModal();
+                $("#question-name-edit").val('');
+                $("#question-score-edit").val('');
+                GetListQuestion();
+            }
+            if (rs.status === "error") {
+                setTimeout(() => {
+                    alert("Lưu câu hỏi thất bại. Hãy kiểm tra chính xác các trường bạn vừa chỉnh sửa!");
+                }, 300)
+            }
+        }
+
+        // Hàm chọn hình ảnh
+
+        const OpenFilePickerDialog = async (el) => {
+            $(el).siblings('input[type=file]').click();
+        }
+        const QuestionImageFile_OnChange = async (el) => {
+
+            let file = $(el)[0].files;
+
+            let reader = new FileReader();
+            reader.onloadend = (rs) => {
+                let imageBase64Part = rs.currentTarget.result.split(',');
+                $(el).siblings('#question-image-data').val(imageBase64Part[1]);
+                $(el).siblings('.preview').css('background-image', `url(${rs.currentTarget.result})`);
+            }
+            reader.readAsDataURL(file[0])
+        }
+
+        // MODAL LIST ANSWERS
+
+        // Hàm mở modal list answers
+        const OpenModalListAnswers = (el) => {
+            questionId = $(el).closest('tr').data('id');
+            GetListQuestionAnswers();           
+            $('#modal-list-answers').css("display", "flex");
+        }
+
+        // Hàm đóng modal list answers
+        const CloseModalListAnswers = () => {
+            questionId = '';
+            $('#modal-list-answers input').val("");
+            $('#modal-list-answers').css("display", "none");
+        }
+
+        // Hàm lấy danh sách đáp án câu hỏi
+
+        const GetListQuestionAnswers = async () => {
+            const rq = await fetch(`https://localhost:7270/api/QuestionAnswer/GetListQuestionAnswer?questionId=${questionId}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                }
+            })
+
+            const rs = await rq.json();
+            if (rs.status === 'unauthenticated') window.location.href = ('/login/login')
+            else if (rs.status === 'error') alert('Lỗi !')
+            else if (rs.status === 'success') {
+                $('.list-answers').html(``);
+                for (i = 0; i < rs.data.listData.length; i++) {
+                    let stt = i + 1;
+                    const item = rs.data.listData[i];
+                    $('.list-answers').append(`
+                        <tr class="table-row" data-id=${item.QuestionAnswerId}>
+                            <td class="table-data">
+                                ${stt}
+                            </td>
+                            <td class="table-data">
+                                ${item.Description}
+                            </td>
+                            <td class="table-data">
+                                ${item.IsCorrect}
+                            </td>
+                            <td class="table-data">
+                                <span onclick="OpenModalAnswer(this);">Chi tiết</span>
+                                    /
+                                <span onclick="OpenModalAnswer(this);">Sửa</span>
+                                    /
+                                <span onclick="DeleteAnswer(this);">Xoá</span>
+                            </td>
+                        </tr>
+                    `)
+                }
+            }
+        }
+
+        
+
+        // MODAL ANSWER
+
+        // Hàm mở modal answer
+        const OpenModalAnswer = async (el = null) => {
+            $('#modal-answer').css("display", "flex");
+            console.log('questionAnswerId=', questionAnswerId);
+            if (el !== null) {
+                const id = $(el).closest('tr').data('id');
+                const rs = await GetAnswerInfo(id);
+                $("#answer-id").val(id);
+                $('#answer-title').val(rs.data.description);
+                $('#select-answer').val(rs.data.isCorrect.toString());
+            }
+
+        }
+
+        // Hàm đóng modal answer
+        const CloseModalAnswer = () => {
+            questionAnswerId = '';
+            $('#modal-answer input').val("");
+            $('#modal-answer').css("display", "none");
+        }
+
+        // Hàm lấy thông tin answer
+
+        const GetAnswerInfo = async (id) => {
+            const rq = await fetch(`https://localhost:7270/api/QuestionAnswer/GetQuestionAnswer?id=${id}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                }
+            })
+            const rs = rq.json();
+            return rs;
+        }
+
+        // Hàm xoá answer
+        const DeleteAnswer = async (el) => {
+            if (confirm('Bạn có chắc muốn xoá đáp án này không ?') === false) return;
+            const answerId = $(el).closest('tr').data('id')
+            const rq = await fetch(`https://localhost:7270/api/QuestionAnswer/Delete?id=${answerId}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                }
+            })
+
+            const rs = await rq.json();
+            if (rs.status === "success") {
+                setTimeout(() => {
+                    alert("Xoá đáp án thành công!");
+                }, 300)
+                GetListQuestionAnswers();
+            }
+            return rs;
+        }
+
+        // Hàm lưu answer sau khi thêm/sửa
+        const SaveAnswer = async () => {
+            const model = {
+                questionId: questionId,
+                questionAnswerId: $('#answer-id').val(),
+                description: $('#answer-title').val(),
+                isCorrect: ($('#select-answer').val() === "true"),
+            }
+
+            let url = 'https://localhost:7270/api/QuestionAnswer/Insert';
+            if (model.questionAnswerId !== '') url = 'https://localhost:7270/api/QuestionAnswer/Update';
+
+            const rq = await fetch(url, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                },
+                body: JSON.stringify(model),
+            })
+
+            const rs = await rq.json();
+            if (rs.status === "success") {
+                setTimeout(() => {
+                    alert("Lưu đáp án thành công!");
+                }, 300)
+                CloseModalAnswer();
+                GetListQuestionAnswers();
+            }
+            if (rs.status === "error") {
+                setTimeout(() => {
+                    alert("Lưu đáp án thất bại. Hãy kiểm tra chính xác các trường bạn vừa nhập!");
+                }, 300)
+            }
+        }
+
+    </script>
+}
+
+
+
+
+

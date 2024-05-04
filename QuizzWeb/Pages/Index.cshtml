@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@section Styles {
+    <style>
+        .title {
+            text-align: center;
+            margin-top: 100px;
+            font-size: 10rem;
+        }
+
+        @@media screen and (max-width: 767px) {
+            .title {
+                margin-top: 0;
+                font-size: 8rem;
+            }
+        }
+    </style>
+}
+
+<div class="home-container">
+    <h1 class="title">Chào mừng bạn đến với trang Quizizz.</h1>
+</div>
+
+
+
+
+

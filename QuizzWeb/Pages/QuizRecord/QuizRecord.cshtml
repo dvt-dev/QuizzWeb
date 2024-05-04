@@ -1,0 +1,137 @@
+﻿@page
+@model QuizzWeb.Pages.QuizRecord.QuizRecordModel
+@{
+
+}
+
+@section styles {
+    <style>
+        .quiz-record_content {
+            margin-top: 40px;
+            border: 1px solid #ddd;
+            max-height: 260px;
+        }
+
+        .table-data {
+            height: 60px;
+            line-height: 0;
+        }
+
+        .quiz-record_content {
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        @@media screen and (max-width: 767px) {
+            .quiz-record_content .table-heading:nth-child(1), .quiz-record_content .table-data:nth-child(1) {
+                display: none;
+            }
+
+            .quiz-record_content.table-heading:nth-child(2), .quiz-record_content .table-data:nth-child(2) {
+                width: auto;
+            }
+        }
+    </style>
+}
+
+<div class="quiz-record-wrapper">
+    <div class="quiz-record-container">
+        <h2 action="quiz-recor_title">Lịch sử làm bài</h2>
+        <div class="quiz-record_content">
+            <table class="table">
+                <thead>
+                    <tr class="table-header">
+                        <th class="table-heading">
+                            STT
+                        </th>
+                        <th class="table-heading">
+                            Tên đề thi
+                        </th>
+                        <th class="table-heading">
+                            Số điểm
+                        </th>
+                        <th class="table-heading">
+                            Thời gian
+                        </th>
+                        <th class="table-heading">
+                            Thời gian làm bài
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="list-quiz-record">
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const token = GetCookie('userToken');
+        
+        const GetExamInfo = async (id) => {
+            const rq = await fetch(`https://localhost:7270/api/Exam/GetDetail?id=${id}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                },
+            })
+
+            const rs = await rq.json();
+           
+            return rs;
+        }
+
+        const GetListQuizRecord = async () => {
+            const rq = await fetch(`https://localhost:7270/api/User/GetListUserResult?page=1`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                }
+            })
+
+            const rs = await rq.json();
+            console.log(rs);
+            if (rs.status === 'unauthenticated') window.location.href = ('/login/login')
+            else if (rs.status === 'error') alert('Lỗi !')
+            else if (rs.status === 'success') {
+                $('.list-quiz-record').html(``);
+               for(i=0; i<rs.data.listData.length; i++) {
+                   let stt=i+1;
+                   const item = rs.data.listData[i];
+                   const examId = item.ExamId;
+                   const rs1 = await GetExamInfo(examId);
+                   const examName = rs1.data.title;
+                    $('.list-quiz-record').append(`
+                                <tr class="table-row" data-id=${item.UserResultId} onclick="direction('/quizRecordDetail/quizRecordDetail?userResultId=${item.UserResultId}')">
+                            <td class="table-data">
+                                ${stt}
+                            </td>
+                            <td class="table-data">
+                                ${examName}
+                            </td>
+                            <td class="table-data">
+                                ${item.TotalScore}
+                            </td>
+                            <td class="table-data">
+                                ${new Date(item.CreateTime).toLocaleString()}
+                            </td>
+                            <td class="table-data">
+                                ${item.TimeLapse} giây
+                            </td>
+                        </tr>
+                    `)
+
+               }
+            }
+
+
+        }
+
+        GetListQuizRecord();
+    </script>
+}

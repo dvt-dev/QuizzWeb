@@ -1,0 +1,131 @@
+﻿@page
+@model QuizzWeb.Pages.Exam.ExamModel
+@{
+    ViewData["Title"] = "Exam page";
+}
+
+@section Styles {
+    <style>
+
+        .exam-wrapper {
+            border: 1px solid #ddd;
+            padding: 20px 24px;
+            overflow-y: scroll;
+            max-height: 465px;
+        }
+
+        .exam-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap:17px;
+        }
+
+        .exam-item {
+            width: 23.6%;
+            border: 1px solid #ddd;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exam-icon {
+            text-align: center;
+        }
+
+        .exam-icon i {
+            font-size: 5rem;
+        }
+
+        .exam-item_info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .take-exam-btn {
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+        }
+
+        .take-exam-btn:hover {
+            background-color: rgba(0, 0, 0, .5);
+            color: #fff;
+        }
+
+        @@media screen and (min-width: 768px) {
+            .exam-list {
+                gap: 14px;
+            }
+            
+        }
+
+        @@media screen and (max-width: 767px) {
+            .exam-item {
+                width: 47%;
+            }
+        }
+    </style>
+}
+
+<div class="exam-wrapper">
+    <div class="exam-container">
+        <ul class="exam-list">
+            
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+        // Lấy danh sách đề thi
+
+        const GetListExam = async () => {
+            let page = 1;
+            let token = GetCookie('userToken');
+            let rq = await fetch(`https://localhost:7270/api/Exam/GetList?page=${page}`, {
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token
+                },
+            })
+
+            const rs = await rq.json();
+            if (rs.status === 'unauthenticated') window.location.href = ('/login/login')
+            else if (rs.status === 'error') alert('Lỗi !')
+            else if (rs.status === 'success') {
+                $('.exam-list').html(``);
+                for (i = 0; i < rs.data.listData.length; i++) {
+                    const item = rs.data.listData[i];
+                    const stt = i + 1;
+
+                    $('.exam-list').append(`
+                        <li class="exam-item" data-id="${item.ExamId}">
+                            <div class="exam-icon">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+                            <div class="exam-item_info">
+                                <h2 class="exam-name">
+                                    ${item.Title}
+                                </h2>
+                                <p class="exam-time">
+                                    Thời gian: ${item.TotalTime} phút
+                                </p>
+                            </div>
+                            <button class="take-exam-btn" onclick="direction('/test/test?examId=${item.ExamId}')">
+                                Làm bài
+                            </button>
+                        </li>
+                    `)
+                }
+            }
+
+        }
+        GetListExam();
+    </script>
+}

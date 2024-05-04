@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - QuizzWeb</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="~/assets/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/assets/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    @*<link rel="stylesheet" href="~/QuizzWeb.styles.css" asp-append-version="true" />*@
+    @RenderSection("Styles",false)
+
+</head>
+<body>
+    <header id="header">
+        <div class="header-logo" onclick="direction('/')">
+            <h1 class="header-name">Quizz Web</h1>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="nav-link" onclick="direction('/')">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="direction('/exam/exam')">Đề thi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="direction('/quizRecord/quizRecord')">Lịch sử làm bài</a>
+                </li>
+               
+            </ul>
+        </nav>
+        <div class="user-info">
+            <div class="user-avatar">
+                <img class="user-avt-img" src="https://cdn.sforum.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" />
+            </div>
+            <p id="user-name"></p>
+        </div>
+        <button class="log-out-btn" onclick="LogOut();">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Log_Out"> <path id="Vector" d="M12 15L15 12M15 12L12 9M15 12H4M9 7.24859V7.2002C9 6.08009 9 5.51962 9.21799 5.0918C9.40973 4.71547 9.71547 4.40973 10.0918 4.21799C10.5196 4 11.0801 4 12.2002 4H16.8002C17.9203 4 18.4796 4 18.9074 4.21799C19.2837 4.40973 19.5905 4.71547 19.7822 5.0918C20 5.5192 20 6.07899 20 7.19691V16.8036C20 17.9215 20 18.4805 19.7822 18.9079C19.5905 19.2842 19.2837 19.5905 18.9074 19.7822C18.48 20 17.921 20 16.8031 20H12.1969C11.079 20 10.5192 20 10.0918 19.7822C9.71547 19.5905 9.40973 19.2839 9.21799 18.9076C9 18.4798 9 17.9201 9 16.8V16.75" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+        </button>
+        <button class="nav-menu-btn" onclick="SliceMenuMobile();">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="mobile-menu">
+            <button class="close-menu-mobile-btn" onclick="CloseMenuMobile();">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <ul class="mobile-menu-list">
+                <li class="mobile-menu-item" onclick="direction('/')">
+                    <a class="mobile-menu-link">Trang chủ</a>
+                </li>
+                <li class="mobile-menu-item" onclick="direction('/exam/exam')">
+                    <a class="mobile-menu-link">Đề thi</a>
+                </li>
+                <li class="mobile-menu-item" onclick="direction('/quizrecord/quizrecord')">
+                    <a class="mobile-menu-link">Lịch sử làm bài</a>
+                </li>
+                <li class="mobile-menu-item" onclick="LogOut();">
+                    <a class="mobile-menu-link">Đăng xuất</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <partial name="@("~/Pages/Shared/_MenuNavigation.cshtml")" />
+
+    <div id="main-container">
+        <main class="main-content">
+            @RenderBody()
+        </main>
+        <div class="chat-icon" onclick="OpenChatWindow();">
+            <i class="fa-solid fa-comment-dots"></i>
+        </div>
+        <div class="chat-wrapper">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat_user-info">
+                        <span class="user-icon">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+                        <p class="chat_user-name"></p>
+                    </div>
+                    <div class="chat-close-btn" onclick="CloseChatWindow();">
+                        <i class="fa-solid fa-minus"></i>
+                    </div>
+                </div>
+                <ul class="message-container">
+                    
+                    
+
+                    @*<li class="message-feedback">
+                        <p class="feedback">
+                            Đỗ Văn Tuấn đang nhập tin nhắn ...
+                        </p>
+                    </li>*@
+                </ul>
+
+                <div class="message-form">
+                    <input type="text" name="message" placeholder="Nhập tin nhắn ..."  autocomplete="off" id="message-input" class="message-input" />
+                    <div class="v-divider"></div>
+                    <button class="send-button" onclick="SendMessage();">
+                        send
+                        <span><i class="fa-solid fa-paper-plane"></i></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+    <script>
+        let 
+        _accout = '';
+        let _webSocket;
+
+        const SliceMenuMobile = () => {
+            $('.mobile-menu').css("display", "flex");
+            $('table').css("z-index", "-1");
+        }
+
+        const CloseMenuMobile = () => {
+            $('.mobile-menu').css("display", "none");
+            $('table').css("z-index", "1");
+
+        }
+
+        const OpenChatWindow = () => {
+            $('.chat-wrapper').css('display', 'block');
+            ConnectWebSocket();
+        }
+
+        const CloseChatWindow = () => {
+            $('.chat-wrapper').css('display', 'none');
+
+        }
+
+        const handleNavbarOnclick = (url) => {
+            $('.menu-nav-item').removeClass("active")
+            $(this).addClass("active")
+            window.location.href = (url);
+        }
+
+        const checkUserToken = () => {
+            return document.cookie.split(';').some(function (item) {
+                return item.trim().startsWith('userToken='); 
+            });
+        }
+    
+        if (checkUserToken()) {         
+        } else {           
+            window.location.href = '/login/login'; 
+        }
+
+        const getUserInfo = async () => {
+
+            const token = GetCookie('userToken');
+
+            const rq = await fetch('https://b5d3-14-162-192-138.ngrok-free.app/api/User/GetInfo', {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': token, 
+                    'ngrok-skip-browser-warning':'69420'
+                },
+            })
+            const rs = await rq.json();
+
+            if (rs.status === 'unauthenticated') window.location.href = '/login/login';
+            else if (rs.status === 'error') { if (rs.message) alert(rs.message) }
+            else if (rs.status === 'success') {
+                _accout = rs.data.name;
+                $('#user-name').html(_accout);
+                $('.chat_user-name').html(_accout);
+               console.log(_accout);
+            }
+        }
+
+        getUserInfo();
+
+        const eraseCookie = (cname) => {
+            document.cookie = cname + '=; Max-Age=0; path=/;';
+        }
+
+        const LogOut = () => {
+            const result = confirm("Bạn chắc chắn muốn đăng xuất ?");
+            if (result) {
+                eraseCookie("userToken")
+                direction("/login/login")
+            } else {
+                return;
+            }
+        }
+
+        // Chat
+
+
+
+        $('.message-input').keypress(function (event) {
+            if (event.which === 13) {
+                SendMessage();
+            }
+        });
+
+        const ConnectWebSocket = async () => {
+            _webSocket = new WebSocket(`wss://b5d3-14-162-192-138.ngrok-free.app/api/chat/get?account=${_accout}`);
+            _webSocket.onopen = (rs) => {
+                console.log('onopen ', rs)
+            }
+            _webSocket.onmessage = (rs) => {   
+                const data = JSON.parse(rs.data);
+                const timeMessage = Date.now();
+                if(data.name === undefined) {
+                    $('.message-container').append(`
+                        <li class="message-connect">
+                            <p class="notify-connect">
+                            ${data.message}
+                            </p>
+                        </li>                    
+                    `);
+
+                } else {
+                    if(data.name === _accout) {
+                        $('.message-container').append(`
+                            <li class="message-right">
+                                <p class="message">
+                                    ${data.message}
+                                    <span class="message-time">● ${new Date(timeMessage).toLocaleString()}</span>
+                                </p>
+                            </li>
+                        `);
+                    } else {
+                        $('.message-container').append(`
+                            <li class="message-left">
+                                <p class="message">
+                                    ${data.message}
+                                    <span class="message-time">● ${new Date(timeMessage).toLocaleString()}</span>
+                                </p>
+                            </li>
+                        `);
+                    }
+                }
+                console.log('onmessage ', data)
+            }
+
+
+        }
+
+        const SendMessage = () => {
+            let message = $('.message-input').val();
+            if(message.length != 0) {
+                _webSocket.send(JSON.stringify({
+                    "name": _accout,
+                    "message": message
+                }));          
+            }
+            $('.message-input').val('');
+            $('.message-input').focus();
+
+            const chatContent = $('.message-container');
+            chatContent.scrollTop(chatContent.prop('scrollHeight') - chatContent.height());
+
+        }
+
+
+
+    </script>
+
+</body>
+</html>
+

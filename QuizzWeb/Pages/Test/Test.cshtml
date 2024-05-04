@@ -1,0 +1,714 @@
+﻿@page
+@model QuizzWeb.Pages.Test.TestModel
+@{
+    ViewData["Title"] = "Test";
+    Layout = "";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="~/assets/font-awesome/css/all.css" rel="stylesheet" />
+<link href="~/assets/font-awesome/css/all.min.css" rel="stylesheet" />
+<title>Take Test - Quizizz</title>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-family: "Plus Jakarta Sans", sans-serif;
+    }
+
+    button:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    #test-wrapper {
+        font-family: "Plus Jakarta Sans", sans-serif;
+    }
+
+    .test-container {
+        background-color: #f1f5f9;
+    }
+
+    .test-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        padding: 0 12px;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f1f5f9;
+        border-bottom: 1px solid #9f9f9f;
+    }
+
+    .btn-out {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 10px 16px;
+    }
+
+        .btn-out:hover {
+            cursor: pointer;
+        }
+
+    .log-out-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .user-name {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .test-header_right {
+        display: flex;
+        gap: 100px;
+        align-items: center;
+    }
+
+    .timer {
+        font-size: 20px;
+        width: 120px;
+    }
+
+    .submit-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 12px;
+        background-color: #2f3542;
+        color: #fff;
+        border-radius: 8px;
+    }
+
+        .submit-btn:hover {
+            cursor: pointer;
+        }
+
+    .test-content {
+        height: calc(100% - 80px);
+        margin-top: 80px;
+        padding: 30px 12px;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+    .question-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 2;
+        padding: 24px 12px;
+        background-color: #fff;
+        border-radius: 8px;
+    }
+
+    .question-info {
+    }
+
+    .question-info_heading {
+        height: 100px;
+        display: flex;
+        gap: 80px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .question-des {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex: 1;
+    }
+
+    .question-number {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .question-title {
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .prev-ques-btn, .next-ques-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 18px;
+        padding: 14px 16px;
+        color: #fff;
+        background-color: #f59e0b;
+        border-radius: 8px;
+    }
+     
+    .prev-ques-btn i, .next-ques-btn i {
+        margin-top: 2px;
+    }
+
+    .prev-ques-btn.disable, .next-ques-btn.disable {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .question-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*margin-top: 30px;*/
+    }
+
+    .question-img {
+        max-width: 500px;
+        height: 200px;
+        object-fit: contain;
+    }
+
+    .answer-info {
+        position: relative;
+    }
+
+    .answer-title {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+
+    .answer-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .answer-item {
+        padding: 16px 20px;
+        width: 40%;
+        border: 1px solid #ddd;
+    }
+
+        .answer-item.selected {
+            background-color: #f59e0b;
+            color: #fff;
+        }
+
+        .answer-item:hover {
+            cursor: pointer;
+            background-color: #f59e0b;
+            color: #fff;
+            transition: all ease-in .3s;
+        }
+
+    .answer-content {
+        font-size: 18px;
+    }
+
+    .questions-list-container {
+        width: 504px;
+        height: fit-content;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 12px 0 12px 12px;
+    }
+
+    .question-list_title {
+        font-size: 20px;
+    }
+
+    .question-list {
+        margin-top: 24px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .question-list_item {
+        width: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 24px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        transition: .3s;
+    }
+
+        .question-list_item.active {
+            color: #fff;
+            background-color: #f59e0b;
+        }
+
+    .question-list_item:hover {
+        cursor: pointer;
+        background-color: #f59e0b;
+        color: #fff;
+    }
+
+    /* Modal total score */
+    .modal-total-score {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        z-index: 1;
+    }
+
+    .opac-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+        animation: ease-in fadeIn .3s;
+    }
+
+    .modal-total-score-container {
+        position: relative;
+        padding: 28px;
+        width: 300px;
+        height: auto;
+        background-color: #fff;
+        z-index: 2;
+        animation: growth ease-in .3s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .success-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .modal-total-score-title {
+        font-size: 2rem;
+        text-align:center;
+        font-weight: 600;
+    }
+
+    .button-ok {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 48px;
+        padding: 12px 0;
+        font-size: 1.4rem;
+        color: #fff;
+        background-color: #209365;
+        border-radius: 4px;
+    }
+
+    /*
+        Responisve on mobile
+    */
+
+    @@media (min-width: 748px) and (max-width: 1023px) {
+        .test-content {
+            flex-direction: column;
+        }     
+
+        .questions-list-container {
+            flex: 1;
+            width: 100%;
+        }
+    }
+
+   
+
+</style>
+
+<div id="test-wrapper">
+    <div class="test-container">
+        <header class="test-header">
+            <div class="btn-out" onclick="ExitButtonClick();">
+                <div class="log-out-icon">
+                    <svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000" stroke-width="0.00025"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.75 9.874C11.75 10.2882 12.0858 10.624 12.5 10.624C12.9142 10.624 13.25 10.2882 13.25 9.874H11.75ZM13.25 4C13.25 3.58579 12.9142 3.25 12.5 3.25C12.0858 3.25 11.75 3.58579 11.75 4H13.25ZM9.81082 6.66156C10.1878 6.48991 10.3542 6.04515 10.1826 5.66818C10.0109 5.29121 9.56615 5.12478 9.18918 5.29644L9.81082 6.66156ZM5.5 12.16L4.7499 12.1561L4.75005 12.1687L5.5 12.16ZM12.5 19L12.5086 18.25C12.5029 18.25 12.4971 18.25 12.4914 18.25L12.5 19ZM19.5 12.16L20.2501 12.1687L20.25 12.1561L19.5 12.16ZM15.8108 5.29644C15.4338 5.12478 14.9891 5.29121 14.8174 5.66818C14.6458 6.04515 14.8122 6.48991 15.1892 6.66156L15.8108 5.29644ZM13.25 9.874V4H11.75V9.874H13.25ZM9.18918 5.29644C6.49843 6.52171 4.7655 9.19951 4.75001 12.1561L6.24999 12.1639C6.26242 9.79237 7.65246 7.6444 9.81082 6.66156L9.18918 5.29644ZM4.75005 12.1687C4.79935 16.4046 8.27278 19.7986 12.5086 19.75L12.4914 18.25C9.08384 18.2892 6.28961 15.5588 6.24995 12.1513L4.75005 12.1687ZM12.4914 19.75C16.7272 19.7986 20.2007 16.4046 20.2499 12.1687L18.7501 12.1513C18.7104 15.5588 15.9162 18.2892 12.5086 18.25L12.4914 19.75ZM20.25 12.1561C20.2345 9.19951 18.5016 6.52171 15.8108 5.29644L15.1892 6.66156C17.3475 7.6444 18.7376 9.79237 18.75 12.1639L20.25 12.1561Z" fill="#ff0000"></path> </g></svg>
+                </div>
+                Thoát
+            </div>
+            <h2 class="user-name"></h2>
+            <div class="test-header_right">
+                <div class="timer">
+                    <span class="hour">60</span>
+                    :
+                    <span class="minutes">59</span>
+                    :
+                    <span class="second">59</span>
+                </div>
+                <div class="submit-btn" onclick="SubmitTest();">
+                    <i class="fa-solid fa-file-pen"></i>
+                    Nộp bài
+                </div>
+            </div>
+        </header>
+
+        <div class="test-content">
+            <div class="question-content">
+                <div class="question-info">
+                    
+                </div>
+                <div class="answer-info">
+                    <p class="answer-title">Đáp án: </p>
+                    <ul class="answer-list">
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="questions-list-container">
+                <p class="question-list_title">Danh sách câu hỏi</p>
+                <ul class="question-list">
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-total-score">
+        <div class="opac-layer" onclick="CloseModalToTalScore();"></div>
+        <div class="modal-total-score-container">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier"> 
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM16.0303 8.96967C16.3232 9.26256 16.3232 9.73744 16.0303 10.0303L11.0303 15.0303C10.7374 15.3232 10.2626 15.3232 9.96967 15.0303L7.96967 13.0303C7.67678 12.7374 7.67678 12.2626 7.96967 11.9697C8.26256 11.6768 8.73744 11.6768 9.03033 11.9697L10.5 13.4393L12.7348 11.2045L14.9697 8.96967C15.2626 8.67678 15.7374 8.67678 16.0303 8.96967Z" fill=" #2cda94"></path> 
+                    </g>
+                </svg>
+            </div>
+            <div class="modal-total-score-title">Kết quả: 
+                <br />
+                <p class="total-score"></p> điểm
+            </div>
+            <button class="button-ok" onclick="direction('/exam/exam')">Tiếp tục</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/site.js"></script>
+
+<script>
+    const token = GetCookie('userToken');
+    const examId = GetParamInURL('examId');
+    let questionId = '';             
+
+    let _listQuestion = [];
+    let _currentQuestionIndex = 0;
+    let _timer;
+    let _startTime = 0;
+    
+
+    // Thoát đề thi
+    const ExitButtonClick = () => {
+        if(confirm("Bạn có chắn muốn thoát không ?") === false) return ;
+        window.location.href = ('/');
+    }
+    
+    // Lấy thông tin đề thi
+    const GetExamInfo = async (id) => {
+        const rq = await fetch(`https://localhost:7270/api/Exam/GetDetail?id=${id}`, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': token
+            },
+        })
+
+        const rs = await rq.json();
+
+        return rs;
+    }
+
+  
+    // Lây thông tin người dùng
+    const GetUserInfo = async () => {
+
+        const rq = await fetch('https://localhost:7270/api/User/GetInfo', {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': token
+            },
+        })
+        const rs = await rq.json();
+
+
+        if (rs.status === 'unauthenticated') window.location.href = '/login/login';
+        else if (rs.status === 'error') { if (rs.message) alert(rs.message) }
+        else if (rs.status === 'success') {
+            $('.user-name').html('Thí sinh: ' + rs.data.name);
+        }
+    }
+    GetUserInfo();
+
+
+    // Lấy danh sách câu hỏi
+    const GetListQuestion = async () => {
+        const rq = await fetch(`https://localhost:7270/api/Question/GetList?examId=${examId}`, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': token
+            }
+        })
+
+        const rs = await rq.json();
+
+        if (rs.status === 'unauthenticated') window.location.href = ('/login/login')
+        else if (rs.status === 'error') alert('Lỗi !')
+        else if (rs.status === 'success') {
+            
+            _listQuestion=rs.data.listData;
+            
+            $('.question-list').html(``);
+
+            for (i = 0; i < rs.data.listData.length; i++) {
+                let stt = i + 1;
+                const item = rs.data.listData[i];
+                $('.question-list').append(`
+                    <li class="question-list_item question-list_item--${i} ${ i === _currentQuestionIndex ? 'active' : ''}" data-id="${item.QuestionId}" onclick="GetQuestionInfo(this,${i});" >
+                        <a class="question-list_item-link">${stt < 10 ? '0' + stt : stt.toString()}
+                        </a>
+                    </li>
+                `)
+            }
+
+            RenderCurrentQuestion();
+            
+        }
+        //return rs;
+    }
+    GetListQuestion();
+
+    const RenderCurrentQuestion = async () => {
+        $('.question-info').html(`
+            <div class="question-info_heading">
+                    <button class="prev-ques-btn" onclick="RenderPrevQuestion();">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Câu trước
+                    </button>
+                <div class="question-des">
+                    <span class="question-number">
+                        Câu hỏi số ${_currentQuestionIndex + 1}
+                    </span>
+                        <p class="question-title">${_listQuestion[_currentQuestionIndex].Description}</p>
+                </div>
+                    <button class="next-ques-btn" onclick="RenderNextQuestion()">
+                        Câu tiếp
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="question-image">
+                <img class="question-img" alt="question-img" src="https://localhost:7270/${_listQuestion[_currentQuestionIndex].Image}"  />
+            </div>
+        `)
+        if (_listQuestion[_currentQuestionIndex].ListAnswer === '' || _listQuestion[_currentQuestionIndex].ListAnswer === null || typeof _listQuestion[_currentQuestionIndex].ListAnswer === 'undefined') {
+        await GetListAnswer(_listQuestion[_currentQuestionIndex].QuestionId);
+        }           
+        
+        RenderCurrentAnswer();
+        
+
+    }
+
+    // Hàm lấy thông tin câu hỏi
+
+    const GetQuestionInfo = (el,index) => {
+        _currentQuestionIndex=index;
+        if(!$(el).hasClass('active')) {
+            $(el).siblings().removeClass('active');
+            $(el).addClass('active');
+        }
+        RenderCurrentQuestion(); 
+    }
+
+    const RenderNextQuestion = () => {
+        if (_currentQuestionIndex < _listQuestion.length - 1 ) {
+            _currentQuestionIndex++; 
+            if (!$(`.question-list_item--${_currentQuestionIndex}`).hasClass('active')) {
+                $(`.question-list_item--${_currentQuestionIndex}`).siblings().removeClass('active');
+                $(`.question-list_item--${_currentQuestionIndex}`).addClass('active');
+
+            }
+            RenderCurrentQuestion();
+        }
+        if(_currentQuestionIndex === _listQuestion.length - 1) {
+            $('.next-ques-btn').addClass("disable");
+        }
+    }
+
+    const RenderPrevQuestion = () => {
+        if (_currentQuestionIndex > 0) {
+            _currentQuestionIndex--;
+            if (!$(`.question-list_item--${_currentQuestionIndex}`).hasClass('active')) {
+                $(`.question-list_item--${_currentQuestionIndex}`).siblings().removeClass('active');
+                $(`.question-list_item--${_currentQuestionIndex}`).addClass('active');
+
+            }
+            RenderCurrentQuestion();
+        }
+        if(_currentQuestionIndex === 0) {
+            $('.prev-ques-btn').addClass("disable");
+        }
+    }
+
+
+    // Hàm lấy danh sách đáp án
+    const GetListAnswer = async (questionId) => {
+        const rq = await fetch(`https://localhost:7270/api/QuestionAnswer/GetListQuestionAnswer?questionId=${questionId}`, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': token
+            }
+        })
+
+        const rs = await rq.json();
+        
+        _listQuestion[_currentQuestionIndex].ListAnswer = rs.data.listData;
+        //console.log(_listQuestion[_currentQuestionIndex]);
+    }
+    
+
+    const RenderCurrentAnswer = () => {
+        if (_listQuestion[_currentQuestionIndex].ListAnswer === '' || _listQuestion[_currentQuestionIndex].ListAnswer === null || typeof _listQuestion[_currentQuestionIndex].ListAnswer === 'undefined') return;
+        $('.answer-list').html(``);
+        for (i = 0; i < _listQuestion[_currentQuestionIndex].ListAnswer?.length; i++) {
+        let stt = i + 1;
+        const item = _listQuestion[_currentQuestionIndex].ListAnswer[i];
+            $('.answer-list').append(`
+                    <li class="answer-item ${item.isSelected ? 'selected' : ''}" data-id=${item.QuestionAnswerId} onclick="CheckAnswer(this)">
+                        <p class="answer-content">${item.Description}  </p>
+                </li>
+            `)
+        }
+    }
+
+    // Hàm check đáp án
+    const CheckAnswer = (el) => {
+        const questionAnswerId = $(el).data('id');
+        const questionId = _listQuestion[_currentQuestionIndex].QuestionId;
+        for (let i = 0; i < _listQuestion[_currentQuestionIndex].ListAnswer.length; i++) {
+            const currentAnswer = _listQuestion[_currentQuestionIndex].ListAnswer[i];
+            const currentAnswerId = currentAnswer.QuestionAnswerId;
+            _listQuestion[_currentQuestionIndex].ListAnswer[i].isSelected = false;
+            if(questionAnswerId === currentAnswerId) {
+                if(!$(el).hasClass('selected')) {
+                    $(el).siblings().removeClass('selected');
+                    $(el).addClass('selected');
+                    _listQuestion[_currentQuestionIndex].ListAnswer[i].isSelected = true;
+                }
+            }
+        }
+    }
+
+    const CloseModalToTalScore = () => {
+        $('.modal-total-score').css("display", "none");
+    }
+
+    // Hàm nộp bài
+    const SubmitTest = async () => {
+        $('.modal-total-score').css("display", "flex");
+
+        clearInterval(_timer);
+        const timeUsedSeconds = Math.floor((Date.now() - _startTime) / 1000);
+
+        let model = {
+            examId: examId,
+            listAnswer: [],
+            timeLapse: timeUsedSeconds,
+            }
+
+        for(questionIndex=0; questionIndex<_listQuestion?.length; questionIndex++) {
+            for(answerIndex=0; answerIndex<_listQuestion[questionIndex].ListAnswer?.length; answerIndex++) {
+                const currentAnswer = _listQuestion[questionIndex].ListAnswer[answerIndex];
+                if(currentAnswer.isSelected) {
+                    model.listAnswer.push({
+                        questionId: currentAnswer.QuestionId,
+                        questionAnswerId: currentAnswer.QuestionAnswerId,
+                    })
+                }
+            }
+        }
+
+        const rq = await fetch(`https://localhost:7270/api/Home/FinishExamAndGetScore`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': token
+            },
+            body: JSON.stringify(model),
+        })
+
+        const rs = await rq.json();
+        if(rs.status = 'success') {
+            $('.total-score').text(rs.data);
+        }
+    }
+
+    // Hàm đếm ngược thời gian
+    const CoutdowmTimeTest = async () => {
+        const rs = await GetExamInfo(examId);
+        const totalTime = rs.data.totalTime;
+        _startTime = Date.now();
+        let secondsLeft = totalTime * 60;
+        var hours, minutes, seconds;
+
+        const updateTimer = () => {
+            hours = Math.floor(secondsLeft / 3600) < 10 ? "0" + Math.floor(secondsLeft / 3600) : Math.floor(secondsLeft / 3600);
+            minutes = Math.floor((secondsLeft % 3600) / 60) < 10 ? "0" + Math.floor((secondsLeft % 3600) / 60) : Math.floor((secondsLeft % 3600) / 60);
+            seconds = (secondsLeft % 60) < 10 ? ("0" + secondsLeft % 60) : (secondsLeft % 60);
+
+            $('.hour').text(hours);
+            $('.minutes').text(minutes);
+            $('.second').text(seconds);
+
+            secondsLeft--;
+
+            if (secondsLeft <= 0) {
+                clearInterval(_timer);
+                $('.timer').text('Hết thời gian');
+                SubmitTest();
+            }
+        };
+
+        updateTimer(); // Update timer immediately when starting
+
+        _timer = setInterval(updateTimer, 1000);
+    }
+
+    CoutdowmTimeTest();
+
+</script>

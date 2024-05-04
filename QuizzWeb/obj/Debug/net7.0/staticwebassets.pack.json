@@ -1,0 +1,441 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\all.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\all.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\all.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\brands.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\brands.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\brands.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\brands.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\fontawesome.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\fontawesome.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\fontawesome.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\fontawesome.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\regular.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\regular.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\regular.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\regular.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\solid.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\solid.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\solid.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\solid.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\svg-with-js.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\svg-with-js.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\svg-with-js.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\svg-with-js.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\v4-font-face.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\v4-font-face.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\v4-font-face.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\v4-font-face.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\v4-shims.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\v4-shims.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\v4-shims.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\v4-shims.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\v5-font-face.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\v5-font-face.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\css\\v5-font-face.min.css",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\css\\v5-font-face.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_animated.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_animated.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_bordered-pulled.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_bordered-pulled.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_core.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_core.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_fixed-width.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_fixed-width.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_functions.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_functions.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_icons.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_icons.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_list.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_list.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_mixins.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_mixins.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_rotated-flipped.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_rotated-flipped.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_screen-reader.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_screen-reader.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_shims.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_shims.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_sizing.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_sizing.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_stacked.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_stacked.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\_variables.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\_variables.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\brands.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\brands.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\fontawesome.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\fontawesome.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\regular.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\regular.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\solid.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\solid.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\scss\\v4-shims.scss",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\scss\\v4-shims.scss"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\webfonts\\fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\webfonts\\fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\assets\\font-awesome\\webfonts\\fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets\\assets\\font-awesome\\webfonts\\fa-v4compatibility.woff2"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\workspace\\TTSway\\Exersises\\QuizzWeb\\QuizzWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.QuizzWeb.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.QuizzWeb.props",
+      "PackagePath": "build\\QuizzWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.QuizzWeb.props",
+      "PackagePath": "buildMultiTargeting\\QuizzWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.QuizzWeb.props",
+      "PackagePath": "buildTransitive\\QuizzWeb.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
