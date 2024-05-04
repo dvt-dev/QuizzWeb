@@ -138,7 +138,7 @@
 
         const OpenChatWindow = () => {
             $('.chat-wrapper').css('display', 'block');
-            ConnectWebSocket();
+            //ConnectWebSocket();
         }
 
         const CloseChatWindow = () => {
@@ -221,6 +221,7 @@
             _webSocket.onmessage = (rs) => {   
                 const data = JSON.parse(rs.data);
                 const timeMessage = Date.now();
+                const formatTimeMessage = new Date(timeMessage).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 if(data.name === undefined) {
                     $('.message-container').append(`
                         <li class="message-connect">
@@ -236,7 +237,7 @@
                             <li class="message-right">
                                 <p class="message">
                                     ${data.message}
-                                    <span class="message-time">● ${new Date(timeMessage).toLocaleString()}</span>
+                                            <span class="message-time">● ${formatTimeMessage}</span>
                                 </p>
                             </li>
                         `);
@@ -245,17 +246,21 @@
                             <li class="message-left">
                                 <p class="message">
                                     ${data.message}
-                                    <span class="message-time">● ${new Date(timeMessage).toLocaleString()}</span>
+                                                    <span class="message-time">● ${formatTimeMessage}</span>
                                 </p>
                             </li>
                         `);
                     }
+                    
                 }
+                const chatContent = $('.message-container');
+                chatContent.scrollTop(chatContent.prop('scrollHeight') - chatContent.height());
                 console.log('onmessage ', data)
             }
 
-
+            
         }
+        ConnectWebSocket();
 
         const SendMessage = () => {
             let message = $('.message-input').val();
@@ -268,8 +273,7 @@
             $('.message-input').val('');
             $('.message-input').focus();
 
-            const chatContent = $('.message-container');
-            chatContent.scrollTop(chatContent.prop('scrollHeight') - chatContent.height());
+            
 
         }
 
